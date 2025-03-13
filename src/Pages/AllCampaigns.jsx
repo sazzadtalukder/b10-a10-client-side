@@ -49,7 +49,7 @@ const AllCampaigns = () => {
                             <td>{single.campaignTitle}</td>
                             <td>{single.minimumDonationAmount}</td>
                             <td>{single.deadline}</td>
-                            <td><Link to={`/allCampaign/${single._id}`}><button className="btn btn-ghost btn-xs">details</button></Link></td>
+                            <td><Link to={`/allCampaign/${single._id}`}><button className="btn  btn-xs">See more</button></Link></td>
                         </tr>)}
 
 
