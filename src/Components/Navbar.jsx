@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import './Nav.css'
+// import './Nav.css'
 
 const Navbar = () => {
 
@@ -26,26 +26,59 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <NavLink to='/allCampaign'>All Campaign</NavLink>
-                            <NavLink to='/addCampaign'>Add Campaign</NavLink>
-                            <NavLink to='/myCampaign'>My Campaign</NavLink>
-
-                            <li><a>Item 3</a></li>
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow ">
+                            <NavLink to='/' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>Home</NavLink>
+                            <NavLink to='/allCampaign' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>All Campaign</NavLink>
+                            <NavLink to='/addCampaign' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>Add Campaign</NavLink>
+                            <NavLink to='/myCampaign' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>My Campaign</NavLink>
+                        <NavLink to='/myDonation' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>My Donation</NavLink>
+                            
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">Crowdcube</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                         <NavLink to='/allCampaign'>All Campaign</NavLink>
-                        <NavLink to='/addCampaign'>Add Campaign</NavLink>
-                        <NavLink to='/myCampaign'>My Campaign</NavLink>
-                        <li><a>Item 3</a></li>
+                    <ul className="menu menu-horizontal px-1 gap-4">
+                        <NavLink to='/' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>Home</NavLink>
+                        <NavLink to='/allCampaign' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>All Campaign</NavLink>
+                        <NavLink to='/addCampaign' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>Add Campaign</NavLink>
+                        <NavLink to='/myCampaign' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>My Campaign</NavLink>
+                        <NavLink to='/myDonation' className={({ isActive }) =>
+                            `px-2 py-1 rounded ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        }>My Donation</NavLink>
+                        
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    
+
                     {
                         user && user?.email ?
                             <div className="flex  items-center relative group">
@@ -59,7 +92,13 @@ const Navbar = () => {
                             </div>
                             :
                             <div>
-                                <Link className="btn signOut" to='/login'>Login </Link>  <Link className="btn" to='/register'>Register </Link>
+                                <NavLink className={({ isActive }) =>
+                            `btn ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        } to='/login'>Login </NavLink>  <NavLink className={({ isActive }) =>
+                            `btn ${isActive ? "bg-blue-500 text-white" : "text-gray-500"
+                            }`
+                        } to='/register'>Register </NavLink>
                             </div>
                     }
 
