@@ -1,10 +1,12 @@
 import { useContext, useRef } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Loading from "../Components/Loading";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddCampaign = () => {
     const {user,setLoading,loading} = useContext(AuthContext)
-    
+    const navigate = useNavigate()
     const selectRef = useRef(null)
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -29,8 +31,14 @@ const AddCampaign = () => {
         })
         .then(res => res.json())
         .then(data => {
+            Swal.fire({
+                title: "Your Campaign added!",
+                icon: "success",
+                draggable: true
+              });
              console.log('getting data',data)
              setLoading(false)
+             navigate('/allCampaign')
         })
     }
     if(loading){
