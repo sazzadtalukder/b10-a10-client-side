@@ -18,6 +18,7 @@ import MyCampaign from './Pages/MyCampaign.jsx';
 import UpdateCampaign from './Pages/UpdateCampaign.jsx';
 import MyDonation from './Pages/MyDonation.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
+import PrivateRoutes from './Routes/PrivateRoutes.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/addCampaign',
-        element: <AddCampaign></AddCampaign>
+        element: <PrivateRoutes><AddCampaign></AddCampaign></PrivateRoutes>
       },
       {
         path: '/register',
