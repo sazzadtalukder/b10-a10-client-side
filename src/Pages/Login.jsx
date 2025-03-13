@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
         })
         .catch(er=>{
             console.log(er)
+            
         })
     }
     const handleSubmit =(e)=>{
@@ -31,7 +33,13 @@ const Login = () => {
             navigate(location?.state ? location.state : '/')
         })
         .catch(e=>{
-            setError({ ...error, login: e.code })
+            // setError({ ...error, login: e.code })
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: e.code,
+                
+              });
         })      
         console.log(newUser)
     }
