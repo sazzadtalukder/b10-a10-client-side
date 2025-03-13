@@ -9,6 +9,7 @@ import Loading from "../Components/Loading";
 import './Home.css'
 import Slider from "../Components/Slider";
 import { Link } from "react-router-dom";
+import SuccessStory from "../Components/SuccessStory";
 const Home = () => {
     const { loading } = useContext(AuthContext)
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -60,6 +61,7 @@ const Home = () => {
             <Slider></Slider>
             {/* Running campaign section */}
             <section>
+            <h2 className="text-3xl font-bold text-center mb-6">Running Campaign</h2>
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
                     {
 
@@ -89,6 +91,7 @@ const Home = () => {
                     }
                 </div>
             </section>
+            <SuccessStory></SuccessStory>
         </div>
     );
 };
