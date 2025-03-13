@@ -35,9 +35,9 @@ const UpdateCampaign = () => {
                 if (data.modifiedCount) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'Added Coffee',
+                        text: 'Data Updated Successfully',
                         icon: 'success',
-                        confirmButtonText: 'Cool'
+                        // confirmButtonText: 'Cool'
                     })
                 }
                 console.log(data)
@@ -69,9 +69,9 @@ const UpdateCampaign = () => {
                             <input type="date" name='deadline' className="input" placeholder="Deadline" />
 
                             <label className="fieldset-label">Email</label>
-                            <input type="email" className="input" name='email' defaultValue={user?.email} />
+                            <input type="email" className="input" name='email' defaultValue={user?.email} readOnly />
                             <label className="fieldset-label">Name</label>
-                            <input type="text" className="input" name='name' defaultValue={user?.displayName} />
+                            <input type="text" className="input" name='name' defaultValue={user?.displayName}  readOnly/>
                             <button className="btn btn-neutral mt-4">Update</button>
                         </fieldset>
                     </form>
