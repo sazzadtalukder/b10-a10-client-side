@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -52,6 +53,11 @@ const Register = () => {
                     .then(data => {
                         console.log(data)
                     })
+                    Swal.fire({
+                        title: "Successfully registered!",
+                        icon: "success",
+                        draggable: true
+                      });
                     navigate(location?.state ? location.state : '/')
             })
             .catch(er => setError({ ...error, register: er.code }))
