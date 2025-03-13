@@ -26,7 +26,7 @@ const AllCampaigns = () => {
     }
     return (
         <div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto my-20">
                 <div className="text-center">
                 <button className="btn" onClick={handleSort}>Sort</button>
                 </div>

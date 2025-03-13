@@ -47,7 +47,7 @@ const AddCampaign = () => {
     return (
         <div>
             
-            <div className="hero bg-base-200 min-h-screen">
+            <div className="hero bg-base-200 min-h-screen my-20">
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <form className="card-body" onSubmit={handleSubmit}>
                         <fieldset className="fieldset">

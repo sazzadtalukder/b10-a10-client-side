@@ -55,8 +55,7 @@ const MyCampaign = () => {
     }
     return (
         <div>
-            {campaign?.length}
-            {myData?.length}
+            
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
