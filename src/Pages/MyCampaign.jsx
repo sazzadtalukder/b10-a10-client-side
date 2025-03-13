@@ -56,7 +56,7 @@ const MyCampaign = () => {
     return (
         <div>
             
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto my-20">
                 <table className="table">
                     {/* head */}
                     <thead>

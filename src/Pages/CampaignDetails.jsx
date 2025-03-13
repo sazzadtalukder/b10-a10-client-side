@@ -77,7 +77,7 @@ const CampaignDetails = () => {
                                         <p className="text-left"><span className="font-semibold">Minimum Donation:</span> USD $<span className="px-1 bg-amber-400 rounded">{detailsData.minimumDonationAmount}</span></p>
 
                             <button className="btn btn-primary" onClick={handleDonation}>Donate</button>  <br /> <br />
-                            <Link to='/myDonation'><button className="btn btn-primary" >My All Donation</button></Link>
+                           
                         </div>
                     </div>
                 </div>
