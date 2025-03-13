@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/allCampaign/:id',
-        element: <CampaignDetails></CampaignDetails>
+        element: <PrivateRoutes><CampaignDetails></CampaignDetails></PrivateRoutes>
       },
       {
         path: '/myCampaign',
