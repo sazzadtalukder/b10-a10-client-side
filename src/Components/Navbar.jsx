@@ -5,7 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut ,loading} = useContext(AuthContext)
 
     const handleOut = () => {
         logOut()
@@ -83,7 +83,8 @@ const Navbar = () => {
                         user && user?.email ?
                             <div className="flex  items-center relative group">
                                 <div className="">
-                                    <img src={user.photoURL} alt="" className="w-10 h-10 rounded-full" />
+                                    {loading  ? <h2>loading</h2> : <img src={user?.photoURL} alt="" className="w-10 h-10 rounded-full" />}
+                                    
                                 </div>
                                 <div className="absolute bottom-12  left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">
                                     {user.displayName}

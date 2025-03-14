@@ -37,38 +37,41 @@ const Register = () => {
                     displayName: name,
                     photoURL: photoUrl
                 })
-                .then(()=>{
-                    
-                })
-                .catch()
-
+                .then(() => {
+                    result.user.reload().then(() => {
+                    setUser({ ...result.user, displayName: name, photoURL: photoUrl });
+                });
                 fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        "content-type": 'application/json'
-                    },
-                    body: JSON.stringify(newUser)
+                            method: 'POST',
+                            headers: {
+                                "content-type": 'application/json'
+                            },
+                            body: JSON.stringify(newUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                            })
+                        Swal.fire({
+                            title: "Successfully registered!",
+                            icon: "success",
+                            draggable: true
+                        });
+                        navigate(location?.state ? location.state : '/')
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                    })
-                    Swal.fire({
-                        title: "Successfully registered!",
-                        icon: "success",
-                        draggable: true
-                      });
-                    navigate(location?.state ? location.state : '/')
+                .catch(er=>{console.log(er)})
+
+
             })
             .catch(er => setError({ ...error, register: er.code }))
-            
-            
+
+
 
     }
     const handlePassword = (e) => {
         e.preventDefault();
         const newPassword = e.target.value;
-        
+
         const er = checkingError(newPassword)
         setError({ ...error, password: er })
     }
@@ -92,7 +95,7 @@ const Register = () => {
                                         error.password && <label className="label text-xs text-red-700">
                                             {error.password}
                                         </label>
-                                        
+
                                     }
                                     {
                                         error.register &&
@@ -100,8 +103,8 @@ const Register = () => {
                                             {error.register}
                                         </label>
                                     }
-                                    
-                                    <button   className="btn btn-neutral mt-4" type='submit'>Register</button>
+
+                                    <button className="btn btn-neutral mt-4" type='submit'>Register</button>
                                 </fieldset>
                             </form>
                             <p>Already have an account? please <Link to='/login' className="text-red-500">login</Link></p>
