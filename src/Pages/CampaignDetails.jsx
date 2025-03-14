@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import Loading from '../Components/Loading';
@@ -7,8 +7,9 @@ import Loading from '../Components/Loading';
 const CampaignDetails = () => {
     const { user, loading } = useContext(AuthContext)
     const { id } = useParams();
+    const navigate = useNavigate()
     const [campaign, setCampaign] = useState([])
-    const [loader,setLoader] = useState(true)
+    const [loader, setLoader] = useState(true)
     useEffect(() => {
         fetch('https://crowdcube-server-blond.vercel.app/addCampaign')
             .then(res => res.json())
@@ -53,6 +54,14 @@ const CampaignDetails = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log('getting data', data)
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Data Updated Successfully',
+                    icon: 'success',
+                    // confirmButtonText: 'Cool'
+                })
+
+                navigate('/myDonation')
             })
     }
     if (loading || loader) {
@@ -73,12 +82,12 @@ const CampaignDetails = () => {
                                 {detailsData.description}
                             </p>
                             <p><span className="font-semibold">Category:</span> <span className="px-1  bg-green-400 rounded">{detailsData.option}</span></p>
-                                        <p><span className="font-semibold">Deadline:</span> <span className="px-1  bg-red-400 rounded">{detailsData.deadline}</span></p>
-                                        <p> </p>
-                                        <p className="text-left"><span className="font-semibold">Minimum Donation:</span> USD $<span className="px-1 bg-amber-400 rounded">{detailsData.minimumDonationAmount}</span></p>
+                            <p><span className="font-semibold">Deadline:</span> <span className="px-1  bg-red-400 rounded">{detailsData.deadline}</span></p>
+                            <p> </p>
+                            <p className="text-left"><span className="font-semibold">Minimum Donation:</span> USD $<span className="px-1 bg-amber-400 rounded">{detailsData.minimumDonationAmount}</span></p>
 
                             <button className="btn btn-primary" onClick={handleDonation}>Donate</button>  <br /> <br />
-                           
+
                         </div>
                     </div>
                 </div>
