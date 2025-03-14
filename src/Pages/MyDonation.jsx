@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import Loading from "../Components/Loading";
 
 
 
 const MyDonation = () => {
-    const { user } = useContext(AuthContext);
+    const { user ,loading} = useContext(AuthContext);
+    const [loader,setLoader] = useState(true)
     console.log(user)
     const [donation, setDonation] = useState([])
     useEffect(() => {
@@ -14,41 +16,16 @@ const MyDonation = () => {
             .then(data => {
                 setDonation(data)
                 console.log(data)
+                setLoader(false)
 
             })
     }, []);
     const myData = user && donation?.filter(cam => cam.email == user.email)
 
-
+    if(loading || loader)
+        return <Loading></Loading>
     return (
         <div className="my-20">
-            
-            {/* <div className="overflow-x-auto">
-                <table className="table">
-                  
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Campaign Title</th>
-                            <th>Deadline</th>
-                            <th>Category</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {myData && myData.map((single, indx) =>
-                            <tr key={indx}>
-                                <th>{indx + 1}</th>
-                                <td>{single.campaignTitle}</td>
-                                <td>{single.deadline}</td>
-                                <td>{single.option}</td>
-
-                            </tr>)}
-
-
-                    </tbody>
-                </table>
-            </div> */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 border-amber-50 ">
                 {
                     myData && myData.map((single, indx) =>
@@ -67,19 +44,11 @@ const MyDonation = () => {
                                         <p> </p>
                                     </div>
                                     <p className="text-left"><span className="font-semibold">Minimum Donation:</span> USD $<span className="px-1 bg-amber-400 rounded">{single.minimumDonationAmount}</span></p>
-
-
-                                    <div className="card-actions justify-first">
-                                        {/* <Link to={`/allCampaign/${single._id}`}><button className="btn btn-primary">Details</button></Link> */}
-                                    </div>
                                 </div>
                             </div>
                     )
                 }
             </div>
-
-
-
         </div>
     );
 };

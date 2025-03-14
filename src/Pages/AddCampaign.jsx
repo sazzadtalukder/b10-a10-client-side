@@ -1,11 +1,11 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Loading from "../Components/Loading";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const AddCampaign = () => {
-    const {user,setLoading,loading} = useContext(AuthContext)
+    const {user,loading} = useContext(AuthContext)
     const navigate = useNavigate()
     const selectRef = useRef(null)
     const handleSubmit =(e)=>{
@@ -37,7 +37,7 @@ const AddCampaign = () => {
                 draggable: true
               });
              console.log('getting data',data)
-             setLoading(false)
+            
              navigate('/allCampaign')
         })
     }

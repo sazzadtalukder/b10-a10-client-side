@@ -5,15 +5,16 @@ import Swal from 'sweetalert2';
 import Loading from '../Components/Loading';
 
 const CampaignDetails = () => {
-    const { user, loading, setLoading } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
     const { id } = useParams();
     const [campaign, setCampaign] = useState([])
+    const [loader,setLoader] = useState(true)
     useEffect(() => {
         fetch('http://localhost:5000/addCampaign')
             .then(res => res.json())
             .then(data => {
                 setCampaign(data);
-                setLoading(false)
+                setLoader(false)
 
             })
     }, [])
@@ -54,7 +55,7 @@ const CampaignDetails = () => {
                 console.log('getting data', data)
             })
     }
-    if (loading) {
+    if (loading || loader) {
         return <Loading></Loading>
     }
     return (

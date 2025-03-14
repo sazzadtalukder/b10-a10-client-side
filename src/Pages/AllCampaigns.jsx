@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../Components/Loading";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const AllCampaigns = () => {
-    const [campaign, setCampaign,loading,setLoading] = useState([])
+    const [campaign, setCampaign] = useState([])
+    const {loading} = useContext(AuthContext)
+    const [loader,setLoader] = useState(true);
     useEffect(() => {
         fetch('http://localhost:5000/allCampaign')
             .then(res => res.json())
             .then(data => {
                 setCampaign(data)
-                // console.log(data)
-                setLoading(false)
+                console.log(loading)
+                setLoader(false)
 
             })
+            
     },[])
     const handleSort =()=>{
         const newData = [...campaign].sort((a,b)=>a.minimumDonationAmount - b.minimumDonationAmount)
@@ -21,11 +25,12 @@ const AllCampaigns = () => {
         console.log(campaign)
         console.log('sorted done')
     }
-    if(loading){
+    
+    if(loading || loader)
         return <Loading></Loading>
-    }
     return (
         <div>
+            
             <div className="overflow-x-auto my-20">
                 <div className="text-center">
                 <button className="btn" onClick={handleSort}>Sort</button>

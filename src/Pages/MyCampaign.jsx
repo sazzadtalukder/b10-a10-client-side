@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Loading from "../Components/Loading";
 
 
 const MyCampaign = () => {
     
-    const { user } = useContext(AuthContext);
+    const { user,loading } = useContext(AuthContext);
+    const [loader,setLoader] = useState(true)
     console.log(user)
     const [campaign, setCampaign] = useState([])
     useEffect(() => {
@@ -15,6 +17,7 @@ const MyCampaign = () => {
             .then(data => {
                 setCampaign(data)
                 // console.log(campaign)
+                setLoader(false)
 
             })
     }, []);
@@ -53,6 +56,9 @@ const MyCampaign = () => {
             }
         });
     }
+    if (loading || loader) {
+            return <Loading></Loading>
+        }
     return (
         <div>
             
