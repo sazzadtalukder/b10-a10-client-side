@@ -3,7 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import ThemeToggle from "../Components/ThemeToggle";
 import { Typewriter } from "react-simple-typewriter";
 import Lottie from "lottie-react";
-
+// import groovyWalkAnimation from "./groovyWalk.json";
 import { Tooltip } from "react-tooltip";
 import Loading from "../Components/Loading";
 // import './Home.css'
@@ -29,13 +29,27 @@ const Home = () => {
     }
     return (
         <div >
-
-            <input type="checkbox" value="forest" className="toggle theme-controller mt-20" />
-            <div >               
+            <p className="font-bold text-5xl my-10"><Typewriter
+                words={['Welcome', 'to', 'our', 'site!']}
+                loop={100}
+                cursor
+                cursorStyle='_'
+                typeSpeed={70}
+                deleteSpeed={10}
+            /></p>
+            <Tooltip id="my-tooltip" />
+            <input type="checkbox" value="forest" className="toggle theme-controller " data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Toggle Theme!"
+                        data-tooltip-place="top" />
+            <div >
                 <Slider></Slider>
                 {/* Running campaign section */}
                 <section>
-                    <h2 className="text-3xl font-bold text-center mb-6">Running Campaign</h2>
+
+                    <br />
+                    <h2 className="text-3xl font-bold text-center mb-6" data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Running Campaign!"
+                        data-tooltip-place="top">Running Campaign</h2>
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-12">
                         {
 

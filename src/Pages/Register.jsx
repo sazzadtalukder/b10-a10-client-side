@@ -100,7 +100,8 @@ const Register = () => {
                                             {error.register}
                                         </label>
                                     }
-                                    <button className="btn btn-neutral mt-4" type='submit'>Register</button>
+                                    
+                                    <button   className="btn btn-neutral mt-4" type='submit'>Register</button>
                                 </fieldset>
                             </form>
                             <p>Already have an account? please <Link to='/login' className="text-red-500">login</Link></p>
