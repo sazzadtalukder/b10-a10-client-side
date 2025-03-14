@@ -33,7 +33,7 @@ const SuccessStory = () => {
         { title: "Withdraw Funds", description: "Once the campaign ends, withdraw the funds and bring your idea to life." },
       ];
     return (
-        <div className="py-12 px-6 max-w-6xl mx-auto">
+        <div className=" px-6 max-w-6xl mx-auto mb-20">
       {/* Success Stories Section */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-center mb-6">Success Stories</h2>
