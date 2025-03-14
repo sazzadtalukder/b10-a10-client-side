@@ -16,7 +16,7 @@ const Home = () => {
     const [loader, setLoader] = useState(true)
     const todayDate = new Date().toISOString().split('T')[0]
     useEffect(() => {
-        fetch('http://localhost:5000/allCampaign')
+        fetch('https://crowdcube-server-blond.vercel.app/allCampaign')
             .then(res => res.json())
             .then(data => {
                 const runningCampaign = data && data.filter(run => run.deadline >= todayDate)
@@ -24,7 +24,7 @@ const Home = () => {
                 setLoader(false)
             })
     }, [])
-    console.log(running)
+    // console.log(running)
     if (loading) {
         return <Loading></Loading>
     }

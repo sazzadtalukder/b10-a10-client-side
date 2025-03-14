@@ -9,11 +9,11 @@ const AllCampaigns = () => {
     const {loading} = useContext(AuthContext)
     const [loader,setLoader] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:5000/allCampaign')
+        fetch('https://crowdcube-server-blond.vercel.app/allCampaign')
             .then(res => res.json())
             .then(data => {
                 setCampaign(data)
-                console.log(loading)
+                // console.log(loading)
                 setLoader(false)
 
             })
@@ -22,8 +22,8 @@ const AllCampaigns = () => {
     const handleSort =()=>{
         const newData = [...campaign].sort((a,b)=>a.minimumDonationAmount - b.minimumDonationAmount)
         setCampaign(newData)
-        console.log(campaign)
-        console.log('sorted done')
+        // console.log(campaign)
+        // console.log('sorted done')
     }
     
     if(loading || loader)

@@ -31,7 +31,7 @@ const Register = () => {
         const newUser = { name, email, photoUrl, password };
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 setUser(result.user)
                 updateUserProfile({
                     displayName: name,
@@ -41,7 +41,7 @@ const Register = () => {
                     result.user.reload().then(() => {
                     setUser({ ...result.user, displayName: name, photoURL: photoUrl });
                 });
-                fetch('http://localhost:5000/users', {
+                fetch('https://crowdcube-server-blond.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 "content-type": 'application/json'
@@ -50,7 +50,7 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(data)
+                                // console.log(data)
                             })
                         Swal.fire({
                             title: "Successfully registered!",
@@ -59,9 +59,7 @@ const Register = () => {
                         });
                         navigate(location?.state ? location.state : '/')
                 })
-                .catch(er=>{console.log(er)})
-
-
+                .catch()
             })
             .catch(er => setError({ ...error, register: er.code }))
 

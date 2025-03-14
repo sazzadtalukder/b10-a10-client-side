@@ -9,10 +9,10 @@ const MyCampaign = () => {
     
     const { user,loading } = useContext(AuthContext);
     const [loader,setLoader] = useState(true)
-    console.log(user)
+    // console.log(user)
     const [campaign, setCampaign] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/allCampaign')
+        fetch('https://crowdcube-server-blond.vercel.app/allCampaign')
             .then(res => res.json())
             .then(data => {
                 setCampaign(data)
@@ -36,13 +36,13 @@ const MyCampaign = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myCampaign/${id}`, {
+                fetch(`https://crowdcube-server-blond.vercel.app/myCampaign/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount) {
-                            console.log(data)
+                            // console.log(data)
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your Campaign has been deleted.",

@@ -20,9 +20,9 @@ const AddCampaign = () => {
         const deadline  = form.deadline.value
         const email = form.email.value
         const name = form.name.value
-        console.log(imageUrl,campaignTitle,option,description,minimumDonationAmount,deadline,email,name)
+        // console.log(imageUrl,campaignTitle,option,description,minimumDonationAmount,deadline,email,name)
         const newCampaign = {imageUrl,campaignTitle,option,description,minimumDonationAmount,deadline,email,name};
-        fetch('http://localhost:5000/addCampaign', {
+        fetch('https://crowdcube-server-blond.vercel.app/addCampaign', {
             method: 'POST',
             headers: {
                 "content-type": 'application/json'
@@ -36,7 +36,7 @@ const AddCampaign = () => {
                 icon: "success",
                 draggable: true
               });
-             console.log('getting data',data)
+            //  console.log('getting data',data)
             
              navigate('/allCampaign')
         })

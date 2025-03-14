@@ -12,10 +12,10 @@ const Login = () => {
     const handleGoogle =()=>{
         googleSignIn()
         .then(result=>{
-            console.log(result.user)
+            // console.log(result.user)
         })
         .catch(er=>{
-            console.log(er)
+            // console.log(er)
             
         })
     }
@@ -29,7 +29,7 @@ const Login = () => {
         const newUser  = {email,password};
         loginUser(email,password)
         .then((result)=>{
-            console.log(result.user)
+            // console.log(result.user)
             setUser(result.user)
             navigate(location?.state ? location.state : '/')
         })
@@ -42,7 +42,7 @@ const Login = () => {
                 
               });
         })      
-        console.log(newUser)
+        // console.log(newUser)
     }
     return (
         <div>

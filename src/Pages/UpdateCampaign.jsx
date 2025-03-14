@@ -1,13 +1,13 @@
 import { useContext, useRef } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const UpdateCampaign = () => {
     const {user} = useContext(AuthContext)
         const myData = useLoaderData()
-        
+        const navigate = useNavigate()
         const selectRef = useRef(null)
         const handleSubmit =(e)=>{
             e.preventDefault();
@@ -23,7 +23,7 @@ const UpdateCampaign = () => {
             // const name = form.name.value
             // console.log(imageUrl,campaignTitle,option,description,minimumDonationAmount,deadline,email,name)
             const updateCampaign = {imageUrl,campaignTitle,option,description,minimumDonationAmount,deadline};
-            fetch(`http://localhost:5000/updateCampaign/${myData._id}`, {
+            fetch(`https://crowdcube-server-blond.vercel.app/updateCampaign/${myData._id}`, {
                 method: 'PUT',
                 headers: {
                     "content-type": 'application/json'
@@ -40,7 +40,8 @@ const UpdateCampaign = () => {
                         // confirmButtonText: 'Cool'
                     })
                 }
-                console.log(data)
+                navigate('/allCampaign')
+                // console.log(data)
             })
         }
     return (

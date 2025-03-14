@@ -8,14 +8,14 @@ import Loading from "../Components/Loading";
 const MyDonation = () => {
     const { user ,loading} = useContext(AuthContext);
     const [loader,setLoader] = useState(true)
-    console.log(user)
+    // console.log(user)
     const [donation, setDonation] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/myDonation')
+        fetch('https://crowdcube-server-blond.vercel.app/myDonation')
             .then(res => res.json())
             .then(data => {
                 setDonation(data)
-                console.log(data)
+                // console.log(data)
                 setLoader(false)
 
             })

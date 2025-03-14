@@ -10,7 +10,7 @@ const CampaignDetails = () => {
     const [campaign, setCampaign] = useState([])
     const [loader,setLoader] = useState(true)
     useEffect(() => {
-        fetch('http://localhost:5000/addCampaign')
+        fetch('https://crowdcube-server-blond.vercel.app/addCampaign')
             .then(res => res.json())
             .then(data => {
                 setCampaign(data);
@@ -30,12 +30,12 @@ const CampaignDetails = () => {
     const name = user?.displayName;
     const email = user?.email
     const donatatedUser = { option, imageUrl, campaignTitle, description, minimumDonationAmount, deadline, name, email }
-    console.log(donatatedUser)
+    // console.log(donatatedUser)
     const handleDonation = () => {
         const todayDate = new Date().toISOString().split('T')[0]
         if (detailsData.deadline < todayDate) {
-            console.log(detailsData.deadline, todayDate)
-            console.log('it expired');
+            // console.log(detailsData.deadline, todayDate)
+            // console.log('it expired');
             Swal.fire({
                 title: "No!",
                 text: "Deadline is over",
@@ -43,7 +43,7 @@ const CampaignDetails = () => {
             })
             return
         }
-        fetch('http://localhost:5000/addDonation', {
+        fetch('https://crowdcube-server-blond.vercel.app/addDonation', {
             method: 'POST',
             headers: {
                 "content-type": 'application/json'
@@ -52,7 +52,7 @@ const CampaignDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('getting data', data)
+                // console.log('getting data', data)
             })
     }
     if (loading || loader) {

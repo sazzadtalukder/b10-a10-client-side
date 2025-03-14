@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },{
         path: '/updateCampaign/:id',
         element: <UpdateCampaign></UpdateCampaign>,
-        loader: ({params})=>fetch(`http://localhost:5000/updateCampaign/${params.id}`)
+        loader: ({params})=>fetch(`https://crowdcube-server-blond.vercel.app/updateCampaign/${params.id}`)
       },{
         path: '/myDonation',
         element: <PrivateRoutes><MyDonation></MyDonation></PrivateRoutes>
