@@ -40,11 +40,12 @@ const Home = () => {
                         {
 
                             running && running.map((data, indx) =>
-                                <div key={indx} className="card bg-base-100 w-76 shadow-sm">
+                                <div key={indx} className="card bg-base-100  shadow-sm">
                                     <figure>
                                         <img
                                             src={data.imageUrl}
-                                            alt="Campaign Poster" />
+                                            alt="Campaign Poster"
+                                            className="w-full h-40 object-cover rounded" />
                                     </figure>
                                     <div className=" ">
                                         <h2 className="card-title font-bold">{data.campaignTitle}</h2>

@@ -61,12 +61,12 @@ const CampaignDetails = () => {
         <div>
             {
                 detailsData &&
-                <div className="hero bg-base-200 min-h-screen">
-                    <div className="hero-content flex-col lg:flex-row">
+                <div className="hero bg-base-200 min-h-screen my-20">
+                    <div className="flex gap-4 lg:items-center items-start  flex-col lg:flex-row px-0">
                         <img
                             src={detailsData?.imageUrl}
-                            className="max-w-sm rounded-lg shadow-2xl" />
-                        <div className='text-start'>
+                            className="w-full lg:max-w-sm rounded-lg shadow-2xl object-cover" />
+                        <div className='text-start px-0'>
                             <h1 className="text-5xl font-bold">{detailsData.campaignTitle}</h1>
                             <p className="py-6">
                                 {detailsData.description}

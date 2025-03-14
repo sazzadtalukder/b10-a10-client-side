@@ -52,11 +52,12 @@ const MyDonation = () => {
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 border-amber-50 ">
                 {
                     myData && myData.map((single, indx) =>
-                        <div key={indx} className="card bg-base-100 w-76 shadow-sm">
+                        <div key={indx} className="card  bg-base-600  shadow-2xl">
                                 <figure>
                                     <img
                                         src={single.imageUrl}
-                                        alt="Campaign Poster" />
+                                        alt="Campaign Poster" 
+                                        className="w-full h-40 rounded object-cover"/>
                                 </figure>
                                 <div className=" ">
                                     <h2 className="card-title font-bold">{single.campaignTitle}</h2>
